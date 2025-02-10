@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { DonutService } from './donut.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'donut-shop';
+export class AppComponent implements OnInit {
+  cartCount: number = 0;
+  private donutService = inject(DonutService);
+
+  ngOnInit(): void {
+    this.donutService.getCart().subscribe(cart => {
+      this.cartCount = cart.length;
+    });
+  }
 }

@@ -1,19 +1,17 @@
-<div class="donut-list">
-    <h2>Our Donuts 🍩</h2>
-    
-    <!-- Show "Loading..." only when there are no donuts -->
-    <div *ngIf="donuts.length === 0">
-      <p>Loading donuts... 🍩</p>
-    </div>
+<h2>🍩 Donut List</h2>
 
-    <!-- Show the donut list only when there are donuts -->
-    <div *ngIf="donuts.length > 0">
-      <div *ngFor="let donut of donuts" class="donut-card">
-        <a [routerLink]="['/donut', donut.id]">
-          <h3>{{ donut.name }}</h3>
-        </a>
-        <p>Calories: {{ donut.calories }}</p>
-        <img [src]="donut.photo" alt="{{ donut.name }}" width="100">
-      </div>
-    </div>
+<!-- ✅ FIX: Show loading message while fetching donuts -->
+<div *ngIf="donuts.length === 0">
+  <p>Loading donuts... 🍩</p>
+</div>
+
+<!-- ✅ FIX: Display fetched donuts -->
+<div *ngIf="donuts.length > 0">
+  <div *ngFor="let donut of donuts" class="donut-card">
+    <a [routerLink]="['/donut', donut.id]">
+      <h3>{{ donut.name }}</h3>
+    </a>
+    <p>Calories: {{ donut.calories }}</p>
+    <img [src]="donut.photo" alt="{{ donut.name }}" width="100">
+  </div>
 </div>
