@@ -1,0 +1,7 @@
+<div *ngIf="donut">
+    <h2>{{ donut.name }}</h2>
+    <img [src]="donut.photo" alt="{{ donut.name }}">
+    <p>Calories: {{ donut.calories }}</p>
+    <button (click)="addToCart()">Add to Cart</button>
+  </div>
+  
